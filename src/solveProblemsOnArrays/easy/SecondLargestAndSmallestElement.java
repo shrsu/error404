@@ -8,21 +8,21 @@ public class SecondLargestAndSmallestElement {
         if (n < 2)
             return -1;
 
-        int small = Integer.MAX_VALUE;
-        int second_small = Integer.MAX_VALUE;
+        int smallest = Integer.MAX_VALUE;
+        int second_smallest = Integer.MAX_VALUE;
 
         // Loop through the array to find the second smallest element
         for (int i = 0; i < n; i++) {
             // Update the smallest and second smallest values
-            if (arr[i] < small) {
-                second_small = small;
-                small = arr[i];
+            if (arr[i] < smallest) {
+                second_smallest = smallest;
+                smallest = arr[i];
             }
-            else if (arr[i] < second_small && arr[i] != small) {
-                second_small = arr[i];
+            else if (arr[i] < second_smallest && arr[i] != smallest) {
+                second_smallest = arr[i];
             }
         }
-        return second_small; // Return the second smallest element
+        return second_smallest; // Return the second smallest element
     }
 
     // Function to find the second largest element in the array
@@ -31,19 +31,19 @@ public class SecondLargestAndSmallestElement {
         if (n < 2)
             return -1;
 
-        int large = Integer.MIN_VALUE, second_large = Integer.MIN_VALUE;
+        int largest = Integer.MIN_VALUE, second_largest = Integer.MIN_VALUE;
 
         // Loop through the array to find the second largest element
         for (int i = 0; i < n; i++) {
             // Update the largest and second largest values
-            if (arr[i] > large) {
-                second_large = large;
-                large = arr[i];
+            if (arr[i] > largest) {
+                second_largest = largest;
+                largest = arr[i];
             }
-            else if (arr[i] > second_large && arr[i] != large) {
-                second_large = arr[i];
+            else if (arr[i] > second_largest && arr[i] != largest) {
+                second_largest = arr[i];
             }
         }
-        return second_large; // Return the second largest element
+        return second_largest; // Return the second largest element
     }
 }
