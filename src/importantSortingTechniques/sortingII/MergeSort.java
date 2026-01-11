@@ -13,12 +13,8 @@ public class MergeSort {
         int[] R = new int[n2];
 
         // Copy data into temp arrays
-        for (int i = 0; i < n1; i++) {
-            L[i] = arr[left + i];
-        }
-        for (int j = 0; j < n2; j++) {
-            R[j] = arr[mid + 1 + j];
-        }
+        System.arraycopy(arr, left, L, 0, n1);
+        System.arraycopy(arr, mid + 1, R,0, n2);
 
         // Merge the temp arrays back into arr[left..right]
         int i = 0, j = 0, k = left;
