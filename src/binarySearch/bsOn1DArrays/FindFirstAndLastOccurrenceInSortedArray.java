@@ -1,4 +1,4 @@
-package binarySearch;
+package binarySearch.bsOn1DArrays;
 
 public class FindFirstAndLastOccurrenceInSortedArray {
 

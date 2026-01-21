@@ -1,6 +1,4 @@
-package binarySearch;
-
-import java.util.*;
+package binarySearch.bsOn1DArrays;
 
 public class LowerBound {
 
