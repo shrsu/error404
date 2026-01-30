@@ -1,5 +1,7 @@
 package binarySearch.bsOnAnswers;
 
+import java.util.Arrays;
+
 public class SplitArrayLargestSum {
 
     // Returns the number of subarrays needed
