@@ -3,13 +3,6 @@ package binarySearch.bsOn2DArrays;
 // Class to perform staircase search in a row and column wise sorted matrix
 public class SearchInRowAndColumnWiseSortedMatrix {
 
-    private int[][] matrix;
-
-    // Constructor to initialize the matrix
-    public SearchInRowAndColumnWiseSortedMatrix(int[][] matrix) {
-        this.matrix = matrix;
-    }
-
     /**
      * Searches for the target element in the matrix.
      *
@@ -19,7 +12,7 @@ public class SearchInRowAndColumnWiseSortedMatrix {
      * @param target the value to search for
      * @return true if target exists, otherwise false
      */
-    public boolean searchElement(int target) {
+    public boolean searchElement(int target, int[][] matrix) {
         int n = matrix.length;        // Number of rows
         int m = matrix[0].length;     // Number of columns
 
