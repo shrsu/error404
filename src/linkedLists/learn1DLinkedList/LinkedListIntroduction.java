@@ -7,8 +7,15 @@ public class LinkedListIntroduction {
         int data;
         Node next;
 
-        Node(int data) { this.data = data; this.next = null; }
-        Node(int data, Node next) { this.data = data; this.next = next; }
+        Node(int data) {
+            this.data = data;
+            this.next = null;
+        }
+
+        Node(int data, Node next) {
+            this.data = data;
+            this.next = next;
+        }
     }
 
     // Convert array -> linked list. Returns head (null if array empty).
