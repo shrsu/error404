@@ -1,6 +1,6 @@
 package linkedLists.learnDoubleLinkedList;
 
-public class DoublyLinkedListInsertion {
+public class InsertANodeInDoublyLinkedList {
 
     static class Node {
         int data;
