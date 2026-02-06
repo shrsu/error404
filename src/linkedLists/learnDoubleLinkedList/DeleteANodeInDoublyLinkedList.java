@@ -1,6 +1,6 @@
 package linkedLists.learnDoubleLinkedList;
 
-public class DoublyLinkedListDeletion {
+public class DeleteANodeInDoublyLinkedList {
 
     static class Node {
         int data;
