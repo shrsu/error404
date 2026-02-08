@@ -1,8 +1,10 @@
 package linkedLists.mediumProblemsOfLL;
 
+import java.util.Stack;
+
 public class CheckIfLinkedListIsPalindrome {
 
-    // Node class representing a node in the singly linked list
+    // Node definition
     static class Node {
         int data;
         Node next;
@@ -18,24 +20,47 @@ public class CheckIfLinkedListIsPalindrome {
         }
     }
 
-    /**
-     * Checks if the singly linked list is a palindrome.
-     * <p>
-     * Steps:
-     * 1. Find the middle using slow/fast pointers.
-     * 2. Reverse the second half (in-place).
-     * 3. Compare the first half and the reversed second half.
-     * 4. Restore the second half (reverse again) to preserve the list.
-     *
-     * @param head head of the linked list
-     * @return true if palindrome; false otherwise
-     */
-    public boolean isPalindrome(Node head) {
-        if (head == null || head.next == null) {
-            return true; // empty or single node is a palindrome
+    /* =====================================================
+       Method 1: Brute Force using Stack
+       Time:  O(N)
+       Space: O(N)
+       ===================================================== */
+
+    public boolean isPalindromeBruteForce(Node head) {
+        Stack<Integer> stack = new Stack<>();
+        Node temp = head;
+
+        // Push all values to stack
+        while (temp != null) {
+            stack.push(temp.data);
+            temp = temp.next;
         }
 
-        // Step 1: find middle (slow will point to middle for even/odd lengths)
+        // Compare while popping
+        temp = head;
+        while (temp != null) {
+            if (temp.data != stack.pop()) {
+                return false;
+            }
+            temp = temp.next;
+        }
+
+        return true;
+    }
+
+    /* =====================================================
+       Method 2: Optimal In-place Approach
+       Time:  O(N)
+       Space: O(1)
+       ===================================================== */
+
+    public boolean isPalindromeOptimal(Node head) {
+        // Empty or single-node list is always a palindrome
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        // Step 1: Find the middle of the list
         Node slow = head;
         Node fast = head;
         while (fast.next != null && fast.next.next != null) {
@@ -43,43 +68,44 @@ public class CheckIfLinkedListIsPalindrome {
             fast = fast.next.next;
         }
 
-        // Step 2: reverse second half starting from slow.next
-        Node secondHead = reverseList(slow.next);
+        // Step 2: Reverse the second half
+        Node secondHalfHead = reverseList(slow.next);
 
-        // Step 3: compare first half and reversed second half
-        Node p1 = head;
-        Node p2 = secondHead;
-        boolean palindrome = true;
-        while (p2 != null) {
-            if (p1.data != p2.data) {
-                palindrome = false;
+        // Step 3: Compare both halves
+        Node first = head;
+        Node second = secondHalfHead;
+        boolean isPalindrome = true;
+
+        while (second != null) {
+            if (first.data != second.data) {
+                isPalindrome = false;
                 break;
             }
-            p1 = p1.next;
-            p2 = p2.next;
+            first = first.next;
+            second = second.next;
         }
 
-        // Step 4: restore the second half to its original order
-        slow.next = reverseList(secondHead);
+        // Step 4: Restore the list
+        slow.next = reverseList(secondHalfHead);
 
-        return palindrome;
+        return isPalindrome;
     }
 
-    /**
-     * Reverses a singly linked list iteratively and returns the new head.
-     *
-     * @param head head of the list to reverse
-     * @return new head after reversal
-     */
+    /* =====================================================
+       Helper Method: Reverse a Linked List
+       ===================================================== */
+
     private Node reverseList(Node head) {
         Node prev = null;
         Node curr = head;
+
         while (curr != null) {
             Node nextTemp = curr.next;
             curr.next = prev;
             prev = curr;
             curr = nextTemp;
         }
+
         return prev;
     }
 }
