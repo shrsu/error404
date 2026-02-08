@@ -2,7 +2,6 @@ package linkedLists.mediumProblemsOfLL;
 
 public class SegregateOddAndEvenNodesInLinkedList {
 
-
     static class ListNode {
         int val;
         ListNode next;
