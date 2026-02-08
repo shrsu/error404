@@ -2,7 +2,7 @@ package linkedLists.mediumProblemsOfLL;
 
 public class FindStartingPointOfLoopInLinkedList {
 
-    class ListNode {
+    static class ListNode {
         int val;
         ListNode next;
 
