@@ -79,4 +79,66 @@ public class CloneALinkedListWithRandomAndNextPointer {
         // Return head of copied list
         return newHead;
     }
+
+    public Node copyRandomListOptimal(Node head) {
+
+        // If list is empty
+        if (head == null) {
+            return null;
+        }
+
+        Node current = head;
+
+        /* ============================
+           PASS 1: Insert copied nodes
+           ============================ */
+        while (current != null) {
+
+            Node copy = new Node(current.val);
+
+            // Insert copy after original
+            copy.next = current.next;
+            current.next = copy;
+
+            current = copy.next;
+        }
+
+        /* ============================
+           PASS 2: Set random pointers
+           ============================ */
+        current = head;
+
+        while (current != null) {
+
+            if (current.random != null) {
+                current.next.random = current.random.next;
+            }
+
+            current = current.next.next;
+        }
+
+        /* ============================
+           PASS 3: Separate the lists
+           ============================ */
+        current = head;
+
+        Node copyHead = head.next;
+        Node copyCurrent = copyHead;
+
+        while (current != null) {
+
+            // Restore original list
+            current.next = current.next.next;
+
+            // Link copied list
+            if (copyCurrent.next != null) {
+                copyCurrent.next = copyCurrent.next.next;
+            }
+
+            current = current.next;
+            copyCurrent = copyCurrent.next;
+        }
+
+        return copyHead;
+    }
 }
