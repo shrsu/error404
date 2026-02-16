@@ -62,10 +62,7 @@ public class PowerSet {
      * @param current Current subsequence being built
      * @param result  List to store all subsequences
      */
-    private void helper(String s,
-                        int index,
-                        StringBuilder current,
-                        List<String> result) {
+    private void helper(String s, int index, StringBuilder current, List<String> result) {
 
         // Base case: reached end of string
         if (index == s.length()) {
