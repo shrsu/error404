@@ -33,11 +33,4 @@ public class PrintPrimeFactorsOfANumber {
         System.out.println();
     }
 
-    public static void main(String[] args) {
-
-        printPrimeFactors(84);
-        printPrimeFactors(97);
-        printPrimeFactors(1024);
-
-    }
 }
