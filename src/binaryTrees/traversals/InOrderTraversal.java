@@ -1,5 +1,8 @@
 package binaryTrees.traversals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 // Class to perform inorder traversal of a binary tree
 public class InOrderTraversal {
 
@@ -23,7 +26,7 @@ public class InOrderTraversal {
      * @param root Current node being processed
      * @param arr  List to store traversal result
      */
-    public void inorder(Node root, java.util.List<Integer> arr) {
+    public void inorder(Node root, List<Integer> arr) {
 
         // Base case: if node is null, stop recursion
         if (root == null) {
@@ -46,10 +49,10 @@ public class InOrderTraversal {
      * @param root Root of the binary tree
      * @return List containing inorder traversal
      */
-    public java.util.List<Integer> inOrder(Node root) {
+    public List<Integer> inOrder(Node root) {
 
         // Create list to store traversal result
-        java.util.List<Integer> arr = new java.util.ArrayList<>();
+        List<Integer> arr = new ArrayList<>();
 
         // Start inorder traversal
         inorder(root, arr);
