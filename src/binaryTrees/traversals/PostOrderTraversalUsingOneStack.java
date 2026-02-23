@@ -1,9 +1,10 @@
 package binaryTrees.traversals;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.List;
 
-// Class to perform postorder traversal
+// Class to perform iterative postorder traversal using one stack
 public class PostOrderTraversalUsingOneStack {
 
     // Definition of Binary Tree Node
@@ -12,7 +13,6 @@ public class PostOrderTraversalUsingOneStack {
         Node left;
         Node right;
 
-        // Constructor
         Node(int val) {
             data = val;
             left = null;
@@ -21,41 +21,43 @@ public class PostOrderTraversalUsingOneStack {
     }
 
     /**
-     * Recursive helper function for postorder traversal
-     *
-     * @param root Current node
-     * @param result List to store traversal
-     */
-    public void postorder(Node root, List<Integer> result) {
-
-        // Base case: if node is null, stop recursion
-        if (root == null) {
-            return;
-        }
-
-        // Step 1: Traverse left subtree
-        postorder(root.left, result);
-
-        // Step 2: Traverse right subtree
-        postorder(root.right, result);
-
-        // Step 3: Visit current node
-        result.add(root.data);
-    }
-
-    /**
-     * Function to start postorder traversal
+     * Iterative postorder traversal using one stack
      *
      * @param root Root of binary tree
      * @return List containing postorder traversal
      */
     public List<Integer> postOrder(Node root) {
 
-        // List to store result
         List<Integer> result = new ArrayList<>();
 
-        // Start traversal
-        postorder(root, result);
+        ArrayDeque<Node> stack = new ArrayDeque<>();
+
+        Node current = root;
+        Node lastVisited = null;
+
+        while (current != null || !stack.isEmpty()) {
+
+            // Move left and push nodes
+            while (current != null) {
+                stack.push(current);
+                current = current.left;
+            }
+
+            Node peekNode = stack.peek();
+
+            // If right child exists and not yet visited
+            if (peekNode.right != null && lastVisited != peekNode.right) {
+
+                current = peekNode.right;
+
+            } else {
+
+                // Visit node
+                result.add(peekNode.data);
+
+                lastVisited = stack.pop();
+            }
+        }
 
         return result;
     }
