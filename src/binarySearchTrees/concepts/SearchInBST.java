@@ -47,4 +47,21 @@ public class SearchInBST {
         // Target not found
         return null;
     }
+
+    public TreeNode searchBSTRecursive(TreeNode root, int target) {
+
+        // Base case: node is null or target found
+        if (root == null || root.val == target) {
+            return root;
+        }
+
+        // Search in left subtree
+        if (target < root.val) {
+            return searchBSTRecursive(root.left, target);
+        }
+
+        // Search in right subtree
+        return searchBSTRecursive(root.right, target);
+    }
+
 }
